@@ -1,42 +1,227 @@
+/* static/css/styles.css */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    text-align: center;
-    padding: 50px;
-}
-
-h1 {
     color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
 }
 
-form {
-    display: inline-block;
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
     text-align: left;
 }
 
-label {
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #28a745;
+}
+
+.requests-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.request-btn {
     display: block;
-    margin: 10px 0 5px;
+    padding: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    background-color: #f8f9fa;
+    color: #333;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #ddd;
 }
 
-input,
-button {
-    padding: 10px;
-    margin-bottom: 10px;
-    width: 100%;
+.request-btn:hover {
+    background-color: #e9ecef;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-button {
-    background-color: #28a745;
-    color: white;
+.request-region {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: block;
+}
+
+.request-duration {
+    font-size: 1rem;
+    color: #666;
+}
+
+.buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    /* Расстояние между кнопками */
+    justify-content: center;
+    /* Центрирование кнопок */
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    text-align: center;
     border: none;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
 }
 
-button:hover {
+.new-request-btn {
+    background-color: #28a745;
+    /* Зеленый цвет */
+    color: white;
+}
+
+.new-request-btn:hover {
     background-color: #218838;
+    /* Темно-зеленый при наведении */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-img {
-    margin-top: 20px;
+/* Стили для формы */
+.travel-form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Группа элементов формы */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+    outline: none;
+}
+
+/* Стили для кнопки отправки формы */
+.submit-btn {
+    background-color: #28a745;
+    /* Зеленый цвет */
+    color: white;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+    /* Темно-зеленый при наведении */
+    transform: translateY(-2px);
+}
+
+.loading-content p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 1rem;
+}
+
+/* Стили для контейнера страницы ожидания */
+.waiting-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    /* Увеличиваем высоту контейнера */
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Стили для заголовка */
+.waiting-title {
+    font-size: 2.5rem;
+    /* Увеличиваем размер шрифта */
+    color: #28a745;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Стили для контента загрузки */
+.loading-content {
+    text-align: center;
+}
+
+/* Стили для GIF-изображения */
+.loading-gif {
+    width: 200px;
+    /* Увеличиваем размер гифки */
+    height: 200px;
+    margin-bottom: 2rem;
+}
+
+/* Стили для текста ожидания */
+.waiting-text {
+    font-size: 1.5rem;
+    /* Увеличиваем размер шрифта */
+    color: #666;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.profile-btn {
+    background-color: #007bff;
+    /* Синий цвет */
+    color: white;
+}
+
+.profile-btn:hover {
+    background-color: #0056b3;
+    /* Темно-синий при наведении */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }

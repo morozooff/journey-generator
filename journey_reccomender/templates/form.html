@@ -7,16 +7,29 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>Travel Recommendations</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="region">Region:</label>
-        <input type="text" id="region" name="region" required>
-        <label for="purpose">Purpose:</label>
-        <input type="text" id="purpose" name="purpose" required>
-        <label for="duration">Duration (days):</label>
-        <input type="number" id="duration" name="duration" required>
-        <button type="submit">Get Recommendations</button>
-    </form>
+    <div class="container">
+        <h1>Travel Recommendations</h1>
+        <form method="post" class="travel-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="region">Region:</label>
+                <input type="text" id="region" name="region" required>
+            </div>
+            <div class="form-group">
+                <label for="purpose">Purpose:</label>
+                <input type="text" id="purpose" name="purpose" required>
+            </div>
+            <div class="form-group">
+                <label for="duration">Duration (days):</label>
+                <input type="number" id="duration" name="duration" required>
+            </div>
+            <button type="submit" class="btn submit-btn">Get Recommendations</button>
+        </form>
+
+        <!-- Кнопка для перехода в личный кабинет -->
+        <div class="buttons">
+            <a href="{% url 'profile' %}" class="btn profile-btn">View Profile</a>
+        </div>
+    </div>
 </body>
 </html>

@@ -35,4 +35,5 @@ def generate_recomendation(region: str, purpose: str, duration: str) -> str:
     )
 
     result = completion.choices[0].message.content
+    print(result)
     return result

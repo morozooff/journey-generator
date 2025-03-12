@@ -3,29 +3,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Profile</title>
+    <title>Your Requests</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>Your Travel Requests</h1>
-    <ul>
-        {% for req in requests %}
-            <li>
-                <strong>Region:</strong> {{ req.region }}<br>
-                <strong>Purpose:</strong> {{ req.purpose }}<br>
-                <strong>Duration:</strong> {{ req.duration }} days<br>
-                <strong>Date:</strong> {{ req.created_at }}<br>
-                <strong>Responses:</strong>
-                <ul>
-                    {% for answer in req.answers.all %}
-                        <li>{{ answer.response }}</li>
-                    {% empty %}
-                        <li>No responses yet.</li>
-                    {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'travel_form' %}">Make Another Request</a>
+    <div class="container">
+        <h1>Ваши запросы</h1>
+        
+        <!-- Список запросов -->
+        <div class="requests-list">
+            {% for req in requests %}
+                <a href="{% url 'result' req.id %}" class="request-btn">
+                    <span class="request-region">{{ req.region }}</span>
+                    <span class="request-duration">{{ req.duration }} дней</span>
+                </a>
+            {% empty %}
+                <p>У вас пока нет запросов.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Кнопка для создания нового запроса -->
+        <div class="buttons">
+            <a href="{% url 'travel_form' %}" class="btn new-request-btn">Создать новый запрос</a>
+        </div>
+    </div>
 </body>
 </html>

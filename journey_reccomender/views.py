@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .models import Request, Answer
 from .tasks import generate_recommendation
+import markdown
+
 
 def travel_form(request):
     if request.method == 'POST':
@@ -23,10 +25,20 @@ def check_status(request, request_id):
     else:
         return JsonResponse({'status': 'pending'})
 
+# def result(request, request_id):
+#     travel_request = Request.objects.get(id=request_id)
+#     answer = travel_request.answers.first()
+#     return render(request, 'result.html', {'response': answer.response if answer else 'No response yet'})
+
 def result(request, request_id):
     travel_request = Request.objects.get(id=request_id)
     answer = travel_request.answers.first()
-    return render(request, 'result.html', {'response': answer.response if answer else 'No response yet'})
+    response = markdown.markdown(answer.response, extensions=['fenced_code', 'tables'])
+    
+    return render(request, 'result.html', {
+        'request': travel_request,
+        'response': response if answer else 'No response yet',
+    })
 
 def profile(request):
     requests = Request.objects.all().prefetch_related('answers')
