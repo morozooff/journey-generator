@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Waiting</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/scripts.js' %}"></script>
+</head>
+<body>
+    <h1>Generating Recommendations...</h1>
+    <img src="{% static 'images/globe.gif' %}" alt="Loading...">
+    <p>Please wait while we generate your travel recommendations.</p>
+    <script>
+        const requestId = {{ request_id }};
+        checkStatus(requestId);
+    </script>
+</body>
+</html>
